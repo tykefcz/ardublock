@@ -283,7 +283,47 @@
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
-		
+		<BlockGenus name="fu_display" kind="command" color="26 97 218" initlabel="bg.fu_display" >
+			<description>
+	                       <text>Show on display number (-999..-0.09;0.009..9999)</text>
+	                </description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="1234" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_run_display" kind="command" color="26 97 218" initlabel="bg.fu_run_display">
+			<description>
+				<text>Refresh display</text>
+			</description>
+		</BlockGenus>
+
+		<BlockGenus name="fu_listLed1" kind="data" color="160 0 0 " initlabel="bg.fu_led_pin" editable-label="no">
+			<description>
+				<text>LED Pin Constant</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"  />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listBut1" kind="data" color="160 0 0 " initlabel="bg.fu_button_pin" editable-label="no">
+			<description>
+				<text>Button Pin Constant</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"  />
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listServo1" kind="data" color="160 0 0 " initlabel="bg.fu_servo_pin" editable-label="no">
+			<description>
+				<text>Servo Pin Constant</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"  />
+			</BlockConnectors>
+		</BlockGenus>
+
 		<BlockGenus name="scoop_task" kind="command" color="26 97 218" initlabel="bg.program" is-starter="yes" is-terminator="yes" label-unique="yes">
 			<description>
 				<text>this is the loop of the arduino</text>
@@ -11067,7 +11107,61 @@
 				<BlockConnector connector-type="number" connector-kind="plug" position-type="mirror"/>
 			</BlockConnectors>
 		</BlockGenus>
-
+		<BlockGenus name="fu_listLed1" kind="data" color="26 97 218" initlabel="bg.fu_listLed1" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listLed2" kind="data" color="26 97 218" initlabel="bg.fu_listLed2" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listLed3" kind="data" color="26 97 218" initlabel="bg.fu_listLed3" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listLed4" kind="data" color="26 97 218" initlabel="bg.fu_listLed4" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listServo1" kind="data" color="26 97 218" initlabel="bg.fu_listServo1" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listServo2" kind="data" color="26 97 218" initlabel="bg.fu_listServo2" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listServo3" kind="data" color="26 97 218" initlabel="bg.fu_listServo3" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listServo4" kind="data" color="26 97 218" initlabel="bg.fu_listServo4" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listBut1" kind="data" color="26 97 218" initlabel="bg.fu_listBut1" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listBut2" kind="data" color="26 97 218" initlabel="bg.fu_listBut2" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fu_listBut3" kind="data" color="26 97 218" initlabel="bg.fu_listBut3" editable-label="no">
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"/>
+			</BlockConnectors>
+		</BlockGenus>
 	</BlockGenuses>
 
 <!-- Start of Ardublock Standard UI layout -->
@@ -11718,7 +11812,23 @@
 			<FamilyMember>Midi_AS</FamilyMember>
 			<FamilyMember>Midi_B</FamilyMember>
 		</BlockFamily>
-		
+		<BlockFamily>
+			<FamilyMember>fu_listLed1</FamilyMember>
+			<FamilyMember>fu_listLed2</FamilyMember>
+			<FamilyMember>fu_listLed3</FamilyMember>
+			<FamilyMember>fu_listLed4</FamilyMember>
+		</BlockFamily>
+		<BlockFamily>
+			<FamilyMember>fu_listServo1</FamilyMember>
+			<FamilyMember>fu_listServo2</FamilyMember>
+			<FamilyMember>fu_listServo3</FamilyMember>
+			<FamilyMember>fu_listServo4</FamilyMember>
+		</BlockFamily>
+		<BlockFamily>
+			<FamilyMember>fu_listBut1</FamilyMember>
+			<FamilyMember>fu_listBut2</FamilyMember>
+			<FamilyMember>fu_listBut3</FamilyMember>
+		</BlockFamily>
 	</BlockFamilies>
 
 	<BlockDrawerSets>
@@ -11862,6 +11972,14 @@
 				<BlockGenusMember>Serialplus_receive_number</BlockGenusMember>
 				<BlockGenusMember>Serialplus_receive_digital</BlockGenusMember>
 			</BlockDrawer>
+			<BlockDrawer button-color="234 153 71" name="bd.funduino">
+			        <BlockGenusMember>fu_display</BlockGenusMember>
+			        <BlockGenusMember>fu_run_display</BlockGenusMember>
+			        <BlockGenusMember>fu_listLed1</BlockGenusMember>
+			        <BlockGenusMember>fu_listBut1</BlockGenusMember>
+			        <BlockGenusMember>fu_listServo1</BlockGenusMember>
+			</BlockDrawer>
+			
 			<BlockDrawer button-color="26 97 218" name="bd.scoop">
 			    <BlockGenusMember>scoop_task</BlockGenusMember>
 				<BlockGenusMember>scoop_loop</BlockGenusMember>
