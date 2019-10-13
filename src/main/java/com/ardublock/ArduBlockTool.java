@@ -58,6 +58,8 @@ public class ArduBlockTool implements Tool, OpenblocksFrameListener
 
 	public void run() {
 		try {
+			Context.getContext().newFrame();
+			ArduBlockTool.openblocksFrame.setTitle(ArduBlockTool.openblocksFrame.makeFrameTitle());
 			ArduBlockTool.editor.toFront();
 			ArduBlockTool.openblocksFrame.setVisible(true);
 			ArduBlockTool.openblocksFrame.toFront();

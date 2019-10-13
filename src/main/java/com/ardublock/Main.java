@@ -44,7 +44,7 @@ public class Main
 		{
 		    public void windowClosing(WindowEvent e)
 		    {		        
-		        openblocksFrame.doCloseArduBlockFile();		        
+		        openblocksFrame.doCloseArduBlockFile();
 		    }
 		});
 			

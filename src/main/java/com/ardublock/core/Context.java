@@ -20,6 +20,8 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import processing.app.Editor;
+import processing.app.EditorTab;
+import processing.app.PreferencesData;
 
 import com.ardublock.ui.listener.OpenblocksFrameListener;
 
@@ -65,6 +67,7 @@ public class Context
 	
 	private String saveFilePath;
 	private String saveFileName;
+	private String ideSavePath;
 	
 	//final public static String VERSION_STRING = " ";
 	
@@ -126,9 +129,10 @@ public class Context
 		workspaceController.loadFreshWorkspace();
 		
 		loadDefaultArdublockProgram();
-		
+		saveFileName = "unnamed";
 		saveFilePath = null;
-		saveFileName = "untitled";
+		ideSavePath = null;
+
 		workspaceEmpty = true;
 	}
 	
@@ -172,18 +176,16 @@ public class Context
 			workspaceController.loadFreshWorkspace();
 		}
         */
-		
 		Workspace workspace = workspaceController.getWorkspace();
 		Page page = workspace.getPageNamed("Main");
 		
 		FactoryManager manager = workspace.getFactoryManager();
 		Block newBlock;
-        newBlock = new Block(workspace, "loop", false);
-        FactoryRenderableBlock factoryRenderableBlock = new FactoryRenderableBlock(workspace, manager, newBlock.getBlockID());
-        RenderableBlock renderableBlock = factoryRenderableBlock.createNewInstance();
-        renderableBlock.setLocation(100, 100);
-        page.addBlock(renderableBlock);
-        
+	        newBlock = new Block(workspace, "loop", false);
+	        FactoryRenderableBlock factoryRenderableBlock = new FactoryRenderableBlock(workspace, manager, newBlock.getBlockID());
+	        RenderableBlock renderableBlock = factoryRenderableBlock.createNewInstance();
+	        renderableBlock.setLocation(100, 100);
+	        page.addBlock(renderableBlock);
         
 	}
 	
@@ -210,7 +212,8 @@ public class Context
 	
 	public File getArduinoFile(String name)
 	{
-		String path = System.getProperty("user.dir");
+		String path = System.getProperty("user.dir"),
+		       sketch_name = "";
 		if (osType.equals(OsType.MAC))
 		{
 			String javaroot = System.getProperty("javaroot");
@@ -367,5 +370,42 @@ public class Context
 
 	public void setWorkspaceEmpty(boolean workspaceEmpty) {
 		this.workspaceEmpty = workspaceEmpty;
+	}
+
+	public void newFrame() {
+		// celled when ArduBlock frame is opened
+		try {
+		    ideSavePath = PreferencesData.get("sketchbook.path",null);
+		} catch (Exception ex1) {}
+
+		if (editor != null) {
+		  String saveFilePath="",saveFileName="";
+		  File f=null;
+		  try {
+		    f=editor.getCurrentTab().getSketchFile().getFile();
+		    saveFilePath = f.getAbsolutePath();
+                    saveFileName = f.getName();
+                    saveFilePath = saveFilePath.substring(0,
+                                  saveFilePath.length() - saveFileName.length() - 1);
+                    ideSavePath = saveFilePath;
+                    if (saveFileName.endsWith(".ino") || saveFileName.endsWith(".pde"))
+                      saveFileName = saveFileName.substring(0,saveFileName.length() - 4);
+		  } catch (Exception ex) { }
+		  if (this.workspaceEmpty || ! this.workspaceChanged)
+		  try {
+		    f = new File(saveFilePath + "/" + saveFileName + ".abp");
+		    if (f.exists()) {
+		      	loadArduBlockFile(f);
+		      	setWorkspaceChanged(false);
+		    } else {
+		    	System.err.println("ArduBlockFile:" + saveFilePath + "/" + saveFileName + ".abp not exists.");
+		    }
+		  } catch (Exception e) {}
+		}
+	}
+
+	public File getActualIdeDir() {
+		if (ideSavePath==null || ideSavePath=="") return null;
+		return new File(ideSavePath);
 	}
 }

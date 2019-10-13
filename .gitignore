@@ -12,6 +12,9 @@ bin/
 *~
 src/main/resources/com/ardublock/block/ardublock.zip
 deploy.sh
+moje/
+lib/
+pom.xml.bak
 <<<<<<< HEAD
 =======
 test-output

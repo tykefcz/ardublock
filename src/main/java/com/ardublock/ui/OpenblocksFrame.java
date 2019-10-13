@@ -271,17 +271,18 @@ public class OpenblocksFrame extends JFrame
 	
 	private boolean chooseFileAndSave(String ardublockString)
 	{
+		File f = context.getActualIdeDir();
+		if (f != null && f.isDirectory())
+			fileChooser.setCurrentDirectory(f);
 		File saveFile = letUserChooseSaveFile();
+		if (saveFile == null) 
+			return false;
 		saveFile = checkFileSuffix(saveFile);
 		if (saveFile == null)
-		{
 			return false;
-		}
 		
 		if (saveFile.exists() && !askUserOverwriteExistedFile())
-		{
 			return false;
-		}
 		
 		writeFileAndUpdateFrame(ardublockString, saveFile);
 		return true;
