@@ -292,11 +292,74 @@
 					<DefaultArg genus-name="number" label="1234" />
 				</BlockConnector>
 			</BlockConnectors>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/funduino/fundu_display.png</FileLocation>
+				</Image>
+			</Images>
 		</BlockGenus>
 		<BlockGenus name="fu_run_display" kind="command" color="26 97 218" initlabel="bg.fu_run_display">
 			<description>
-				<text>Refresh display</text>
+				<text>Run funduino display, buttons, timers</text>
 			</description>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/funduino/fundu_all.png</FileLocation>
+				</Image>
+			</Images>
+		</BlockGenus>
+
+		<BlockGenus name="fu_led" kind="command" color="26 97 218" initlabel="bg.fu_led">
+			<description>
+				<text>Turn LED 1..4 on/off</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="socket">
+					<DefaultArg genus-name="true" label="true" />
+				</BlockConnector>
+			</BlockConnectors>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/funduino/fundu_led.png</FileLocation>
+				</Image>
+			</Images>
+		</BlockGenus>
+
+		<BlockGenus name="fu_butt_press" kind="data" color="26 97 218" initlabel="bg.fu_butt_press">
+			<description>
+				<text>Turn LED 1..4 on/off</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/funduino/fundu_butt.png</FileLocation>
+				</Image>
+			</Images>
+		</BlockGenus>
+
+		<BlockGenus name="fu_butt_rele" kind="data" color="26 97 218" initlabel="bg.fu_butt_rele">
+			<description>
+				<text>Turn LED 1..4 on/off</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
+			<Images>
+				<Image>
+					<FileLocation>com/ardublock/block/funduino/fundu_butt.png</FileLocation>
+				</Image>
+			</Images>
 		</BlockGenus>
 
 		<BlockGenus name="fu_listLed1" kind="data" color="160 0 0 " initlabel="bg.fu_led_pin" editable-label="no">
@@ -11975,6 +12038,9 @@
 			<BlockDrawer button-color="234 153 71" name="bd.funduino">
 			        <BlockGenusMember>fu_display</BlockGenusMember>
 			        <BlockGenusMember>fu_run_display</BlockGenusMember>
+			        <BlockGenusMember>fu_led</BlockGenusMember>
+			        <BlockGenusMember>fu_butt_press</BlockGenusMember>
+			        <BlockGenusMember>fu_butt_rele</BlockGenusMember>
 			        <BlockGenusMember>fu_listLed1</BlockGenusMember>
 			        <BlockGenusMember>fu_listBut1</BlockGenusMember>
 			        <BlockGenusMember>fu_listServo1</BlockGenusMember>

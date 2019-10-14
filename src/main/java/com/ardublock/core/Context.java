@@ -399,6 +399,10 @@ public class Context
 		      	setWorkspaceChanged(false);
 		    } else {
 		    	System.err.println("ArduBlockFile:" + saveFilePath + "/" + saveFileName + ".abp not exists.");
+		    	if (this.saveFileName=="unnamed") {
+		    		this.saveFilePath = saveFilePath + "/" + saveFileName + ".abp";
+		    		this.saveFileName = saveFileName + ".abp";
+			}
 		    }
 		  } catch (Exception e) {}
 		}
