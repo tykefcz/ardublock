@@ -20,6 +20,8 @@ public class FunduinoLED extends TranslatorBlock
 		                Param2Block = this.getTranslatorBlockAtSocket(1);
 		String Param1 = Param1Block.toCode();
 		
+		if (Param1.startsWith("FUNDUI_LED"))
+		  Param1 = Param1.substring(10,11);
 		String ret = "\tfunduino.led(" + Param1;
 		if (Param2Block != null) 
 		  ret = ret + "," + Param2Block.toCode();

@@ -21,6 +21,8 @@ public class FunduinoButt extends TranslatorBlock
 		String gename=translator.getBlock(blockId).getGenusName();
 		
 		String ret = "funduino.butt_";
+		if (Param1.startsWith("FUNDUI_BUTT"))
+		  Param1 = Param1.substring(11,12);
 		if (gename.startsWith("fu_butt_press")) 
 		  ret = ret + "pressed(";
 		else

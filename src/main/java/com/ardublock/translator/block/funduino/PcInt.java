@@ -26,13 +26,13 @@ public class PcInt extends TranslatorBlock
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ");";
 		} else if (gename.startsWith("pcint_evtop")) { // number
 		  ret = "pcevent_top_ix()";
-		} else if (gename.startsWith("pcint_evrawpin")) { // number(num)
+		} else if (gename.startsWith("pcint_evpin")) { // number(num)
 		  ret = "(eventq["
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + "].pin & 127)";
 		} else if (gename.startsWith("pcint_evedge")) { // bool(num)
 		  ret = "(eventq["
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + "].pin > 127)";
-		} else if (gename.startsWith("pcint_evpin")) { // number(num)
+		} else if (gename.startsWith("pcint_evrawpin")) { // number(num)
 		  ret = "eventq["
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + "].pin";
 		} else if (gename.startsWith("pcint_evstamp")) { // number(num)
@@ -43,6 +43,8 @@ public class PcInt extends TranslatorBlock
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ")";
 		} else if (gename.startsWith("pcint_evpop")) { // proc()
 		  ret = "pcevent_pop();";
+		} else if (gename.startsWith("pcint_ticks")) { // number()
+		  ret = "ticks()";
 		}
 		translator.addHeaderFile("ArPicMtes.h");
 		translator.addSetupCommand("PCbegin();");

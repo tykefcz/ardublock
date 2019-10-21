@@ -283,6 +283,7 @@
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
+
 		<BlockGenus name="fu_display" kind="command" color="26 97 218" initlabel="bg.fu_display" >
 			<description>
 	                       <text>Show on display number (-999..-0.09;0.009..9999)</text>
@@ -315,10 +316,10 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket">
-					<DefaultArg genus-name="number" label="1" />
+					<DefaultArg genus-name="fu_listLed1" label="LED1" />
 				</BlockConnector>
 				<BlockConnector connector-type="boolean" connector-kind="socket">
-					<DefaultArg genus-name="true" label="true" />
+					<DefaultArg genus-name="digital-on" label="on" />
 				</BlockConnector>
 			</BlockConnectors>
 			<Images>
@@ -328,13 +329,119 @@
 			</Images>
 		</BlockGenus>
 
-		<BlockGenus name="fu_butt_press" kind="data" color="26 97 218" initlabel="bg.fu_butt_press">
+		<BlockGenus name="pcint_attach" kind="command" color="245 245 245" initlabel="bg.pcint_attach">
 			<description>
-				<text>Turn LED 1..4 on/off</text>
+				<text>Attach pin change interrupt to pin</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="pinListDigital_D3" label="D3" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_detach" kind="command" color="245 245 245" initlabel="bg.pcint_detach">
+			<description>
+				<text>Detach pin change interrupt from pin</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="pinListDigital_D3" label="D3" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_evtop" kind="data" color="245 245 245" initlabel="bg.pcint_evtop" editable-label="no">
+			<description>
+				<text>Get on top event queue index</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug"  />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_evrawpin" kind="data" color="245 245 245" initlabel="bg.pcint_evrawpin">
+			<description>
+				<text>Event Queue PIN and Edge</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="variable_number" label="event_ix" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_evedge" kind="data" color="245 245 245" initlabel="bg.pcint_evedge">
+			<description>
+				<text>Is Rising Edge in Event Queue</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="variable_number" label="event_ix" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_evpin" kind="data" color="245 245 245" initlabel="bg.pcint_evpin">
+			<description>
+				<text>Event Queue PIN</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="variable_number" label="event_ix" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_evstamp" kind="data" color="245 245 245" initlabel="bg.pcint_evstamp">
+			<description>
+				<text>Event Queue Stamp</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="variable_number" label="event_ix" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_micros" kind="data" color="245 245 245" initlabel="bg.pcint_micros">
+			<description>
+				<text>Convert Ticks to micoseconds</text>
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket">
 					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_ticks" kind="data" color="245 245 245" initlabel="bg.pcint_micros" editable-label="no">
+			<description>
+				<text>Ticks Counter</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="plug" />
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="pcint_evpop" kind="command" color="245 245 245" initlabel="bg.pcint_evpop">
+			<description>
+				<text>Event Queue Next</text>
+			</description>
+		</BlockGenus>
+
+		<BlockGenus name="fu_butt_press" kind="data" color="26 97 218" initlabel="bg.fu_butt_press">
+			<description>
+				<text>Pressed button</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="fu_listBut1" label="Button1" />
 				</BlockConnector>
 				<BlockConnector connector-type="boolean" connector-kind="plug" />
 			</BlockConnectors>
@@ -347,11 +454,11 @@
 
 		<BlockGenus name="fu_butt_rele" kind="data" color="26 97 218" initlabel="bg.fu_butt_rele">
 			<description>
-				<text>Turn LED 1..4 on/off</text>
+				<text>Released button</text>
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number" connector-kind="socket">
-					<DefaultArg genus-name="number" label="1" />
+					<DefaultArg genus-name="fu_listBut1" label="Button1" />
 				</BlockConnector>
 				<BlockConnector connector-type="boolean" connector-kind="plug" />
 			</BlockConnectors>
@@ -360,6 +467,75 @@
 					<FileLocation>com/ardublock/block/funduino/fundu_butt.png</FileLocation>
 				</Image>
 			</Images>
+		</BlockGenus>
+
+		<BlockGenus name="fu_timer_rep_start" kind="command" color="26 97 218" initlabel="bg.fu_timer_rep_start">
+			<description>
+				<text>Start repeat timer</text>
+				<arg-description n="1" name="timer">
+				        User timer number 0..7
+				</arg-description>
+				<arg-description n="2" name="delay">
+				        Time in microseconds between triggers (0..32700)
+				</arg-description>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="100" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="fu_timer_once_start" kind="command" color="26 97 218" initlabel="bg.fu_timer_once_start">
+			<description>
+				<text>Start single run timer</text>
+				<arg-description n="1" name="timer">
+				        User timer number 0..7
+				</arg-description>
+				<arg-description n="2" name="delay">
+				        Time in microseconds to trigger (0..32700)
+				</arg-description>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="100" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="fu_timer_stop" kind="command" color="26 97 218" initlabel="bg.fu_timer_stop">
+			<description>
+				<text>Stop timer</text>
+				<arg-description n="1" name="timer">
+				        User timer number 0..7
+				</arg-description>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+
+		<BlockGenus name="fu_is_timer" kind="data" color="26 97 218" initlabel="bg.fu_is_timer">
+			<description>
+				<text>Is timer event</text>
+				<arg-description n="1" name="timer">
+				      User timer number 0..7
+				</arg-description>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="plug" />
+			</BlockConnectors>
 		</BlockGenus>
 
 		<BlockGenus name="fu_listLed1" kind="data" color="160 0 0 " initlabel="bg.fu_led_pin" editable-label="no">
@@ -12044,6 +12220,20 @@
 			        <BlockGenusMember>fu_listLed1</BlockGenusMember>
 			        <BlockGenusMember>fu_listBut1</BlockGenusMember>
 			        <BlockGenusMember>fu_listServo1</BlockGenusMember>
+			        <BlockGenusMember>fu_timer_rep_start</BlockGenusMember>
+			        <BlockGenusMember>fu_timer_once_start</BlockGenusMember>
+			        <BlockGenusMember>fu_timer_stop</BlockGenusMember>
+			        <BlockGenusMember>fu_is_timer</BlockGenusMember>
+				<BlockGenusMember>pcint_attach</BlockGenusMember>
+				<BlockGenusMember>pcint_detach</BlockGenusMember>
+				<BlockGenusMember>pcint_evtop</BlockGenusMember>
+				<BlockGenusMember>pcint_evrawpin</BlockGenusMember>
+				<BlockGenusMember>pcint_evedge</BlockGenusMember>
+				<BlockGenusMember>pcint_evpin</BlockGenusMember>
+				<BlockGenusMember>pcint_evstamp</BlockGenusMember>
+				<BlockGenusMember>pcint_evpop</BlockGenusMember>
+				<BlockGenusMember>pcint_micros</BlockGenusMember>
+				<BlockGenusMember>pcint_ticks</BlockGenusMember>
 			</BlockDrawer>
 			
 			<BlockDrawer button-color="26 97 218" name="bd.scoop">
