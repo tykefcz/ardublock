@@ -19,24 +19,24 @@ public class PcInt extends TranslatorBlock
 		String gename=translator.getBlock(blockId).getGenusName();
 		String ret = "";
 		if (gename.startsWith("pcint_attach")) { // proc(num)
-		  ret = "PCattachPin(" 
+		  ret = "pcAttachPin(" 
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ");";
 		} else if (gename.startsWith("pcint_detach")) { // proc(num)
-		  ret = "PCdetachPin(" 
+		  ret = "pcDetachPin(" 
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ");";
 		} else if (gename.startsWith("pcint_isevent")) { // bool
-		  ret = "is_pcevent()";
+		  ret = "isPcEvent()";
 		} else if (gename.startsWith("pcint_evpin")) { // number
-		  ret = "pcevent_pin()";
+		  ret = "pceventPin()";
 		} else if (gename.startsWith("pcint_evedge")) { // bool
-		  ret = "pcevent_rise_edge()";
+		  ret = "pceventRiseEdge()";
 		} else if (gename.startsWith("pcint_evstamp")) { // number
-		  ret = "pcevent_stamp()";
+		  ret = "pceventStamp()";
 		} else if (gename.startsWith("pcint_micros")) { // long(long)
 		  ret = "ticksToMicros("
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ")";
 		} else if (gename.startsWith("pcint_evpop")) { // proc()
-		  ret = "pcevent_pop();";
+		  ret = "pceventPop();";
 		} else if (gename.startsWith("pcint_ticks")) { // number()
 		  ret = "ticks()";
 		}
