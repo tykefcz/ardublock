@@ -24,20 +24,14 @@ public class PcInt extends TranslatorBlock
 		} else if (gename.startsWith("pcint_detach")) { // proc(num)
 		  ret = "PCdetachPin(" 
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ");";
-		} else if (gename.startsWith("pcint_evtop")) { // number
-		  ret = "pcevent_top_ix()";
-		} else if (gename.startsWith("pcint_evpin")) { // number(num)
-		  ret = "(eventq["
-		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + "].pin & 127)";
-		} else if (gename.startsWith("pcint_evedge")) { // bool(num)
-		  ret = "(eventq["
-		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + "].pin > 127)";
-		} else if (gename.startsWith("pcint_evrawpin")) { // number(num)
-		  ret = "eventq["
-		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + "].pin";
-		} else if (gename.startsWith("pcint_evstamp")) { // number(num)
-		  ret = "eventq["
-		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + "].stamp";
+		} else if (gename.startsWith("pcint_isevent")) { // bool
+		  ret = "is_pcevent()";
+		} else if (gename.startsWith("pcint_evpin")) { // number
+		  ret = "pcevent_pin()";
+		} else if (gename.startsWith("pcint_evedge")) { // bool
+		  ret = "pcevent_rise_edge()";
+		} else if (gename.startsWith("pcint_evstamp")) { // number
+		  ret = "pcevent_stamp()";
 		} else if (gename.startsWith("pcint_micros")) { // long(long)
 		  ret = "ticksToMicros("
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ")";

@@ -305,7 +305,7 @@
 			</description>
 			<Images>
 				<Image>
-					<FileLocation>com/ardublock/block/funduino/fundu_all.png</FileLocation>
+					<FileLocation>com/ardublock/block/funduino/fundu_all_small.png</FileLocation>
 				</Image>
 			</Images>
 		</BlockGenus>
@@ -351,24 +351,12 @@
 			</BlockConnectors>
 		</BlockGenus>
 
-		<BlockGenus name="pcint_evtop" kind="data" color="245 245 245" initlabel="bg.pcint_evtop" editable-label="no">
+		<BlockGenus name="pcint_isevent" kind="data" color="245 245 245" initlabel="bg.pcint_isevent" editable-label="no">
 			<description>
-				<text>Get on top event queue index</text>
+				<text>Exist Unprocessed Pin Change event</text>
 			</description>
 			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="plug"  />
-			</BlockConnectors>
-		</BlockGenus>
-
-		<BlockGenus name="pcint_evrawpin" kind="data" color="245 245 245" initlabel="bg.pcint_evrawpin">
-			<description>
-				<text>Event Queue PIN and Edge</text>
-			</description>
-			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket">
-					<DefaultArg genus-name="variable_number" label="event_ix" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="plug" />
+				<BlockConnector connector-type="boolean" connector-kind="plug"  />
 			</BlockConnectors>
 		</BlockGenus>
 
@@ -377,9 +365,6 @@
 				<text>Is Rising Edge in Event Queue</text>
 			</description>
 			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket">
-					<DefaultArg genus-name="variable_number" label="event_ix" />
-				</BlockConnector>
 				<BlockConnector connector-type="boolean" connector-kind="plug" />
 			</BlockConnectors>
 		</BlockGenus>
@@ -389,9 +374,6 @@
 				<text>Event Queue PIN</text>
 			</description>
 			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket">
-					<DefaultArg genus-name="variable_number" label="event_ix" />
-				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="plug" />
 			</BlockConnectors>
 		</BlockGenus>
@@ -401,9 +383,6 @@
 				<text>Event Queue Stamp</text>
 			</description>
 			<BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket">
-					<DefaultArg genus-name="variable_number" label="event_ix" />
-				</BlockConnector>
 				<BlockConnector connector-type="number" connector-kind="plug" />
 			</BlockConnectors>
 		</BlockGenus>
@@ -12226,8 +12205,7 @@
 			        <BlockGenusMember>fu_is_timer</BlockGenusMember>
 				<BlockGenusMember>pcint_attach</BlockGenusMember>
 				<BlockGenusMember>pcint_detach</BlockGenusMember>
-				<BlockGenusMember>pcint_evtop</BlockGenusMember>
-				<BlockGenusMember>pcint_evrawpin</BlockGenusMember>
+				<BlockGenusMember>pcint_isevent</BlockGenusMember>
 				<BlockGenusMember>pcint_evedge</BlockGenusMember>
 				<BlockGenusMember>pcint_evpin</BlockGenusMember>
 				<BlockGenusMember>pcint_evstamp</BlockGenusMember>
