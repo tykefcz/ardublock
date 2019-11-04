@@ -27,21 +27,21 @@ public class PcInt extends TranslatorBlock
 		} else if (gename.startsWith("pcint_isevent")) { // bool
 		  ret = "isPcEvent()";
 		} else if (gename.startsWith("pcint_evpin")) { // number
-		  ret = "pceventPin()";
+		  ret = "pcEventPin()";
 		} else if (gename.startsWith("pcint_evedge")) { // bool
-		  ret = "pceventRiseEdge()";
+		  ret = "pcEventRiseEdge()";
 		} else if (gename.startsWith("pcint_evstamp")) { // number
-		  ret = "pceventStamp()";
+		  ret = "pcEventStamp()";
 		} else if (gename.startsWith("pcint_micros")) { // long(long)
 		  ret = "ticksToMicros("
 		      + this.getRequiredTranslatorBlockAtSocket(0).toCode() + ")";
 		} else if (gename.startsWith("pcint_evpop")) { // proc()
-		  ret = "pceventPop();";
+		  ret = "pcEventPop();";
 		} else if (gename.startsWith("pcint_ticks")) { // number()
 		  ret = "ticks()";
 		}
 		translator.addHeaderFile("ArPicMtes.h");
-		translator.addSetupCommand("PCbegin();");
+		translator.addSetupCommand("pcBegin();");
 		return ret;
 	}
 
